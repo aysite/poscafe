@@ -11,7 +11,7 @@ class StoreCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,16 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "nm_category" => "required|unique:categories|max:20"
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            "nm_category.required" => "Category name must be blabla",
+            "nm_category.unique" => "Category name is already use",
+            "nm_category.max" => "Max 20 characters",
         ];
     }
 }

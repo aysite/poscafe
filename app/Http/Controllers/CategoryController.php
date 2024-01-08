@@ -8,59 +8,119 @@ use App\Http\Requests\UpdateCategoryRequest;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public $title = "Category";
+
     public function index()
     {
-        //
+        $data = [
+            "title" => $this->title,
+            "page_title" => $this->title,
+            "dtCategory" => Category::all()
+        ];
+
+        return view('category.data',$data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        $data = [
+            "title" => $this->title,
+            "page_title" => $this->title,
+            "edit" => false
+        ];
+
+        return view('category.form',$data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(StoreCategoryRequest $request)
     {
-        //
+        try {
+            Category::create([
+                "nm_category" => $request->input('nm_category'),
+                "icon_category" => $request->input('icon_category'),
+            ]);
+
+            // Notif Jika Berhasil Disimpan
+            $notif = [
+                'type' => "success",
+                "text" => "Data berhasil disimpan !"
+            ];
+        } catch(Exception $err){
+            // Notif Jika gagal menyimpan
+            $notif = [
+                'type' => "danger",
+                "text" => "Data gagal disimpan !"
+            ];
+        }
+
+        return redirect(route('category.index'))->with('notif',$notif);
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(Category $category)
     {
-        //
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(Category $category)
     {
-        //
+        $data = [
+            "title" => $this->title,
+            "page_title" => $this->title,
+            "edit" => true,
+            "rsCategory" => Category::where("id",$category->id)->first()
+        ];
+
+        return view('category.form',$data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        try {
+            Category::find($category->id)->update([
+                "nm_category" => $request->input('nm_category'),
+                "icon_category" => $request->input('icon_category'),
+            ]);
+
+            // Notif Jika Berhasil Disimpan
+            $notif = [
+                'type' => "success",
+                "text" => "Data berhasil diubah !"
+            ];
+        } catch(Exception $err){
+            // Notif Jika gagal menyimpan
+            $notif = [
+                'type' => "danger",
+                "text" => "Data gagal diubah !"
+            ];
+        }
+
+        return redirect(route('category.index'))->with('notif',$notif);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(Category $category)
     {
-        //
+        try {
+            Category::find($category->id)->delete();
+
+            // Notif Jika Berhasil Disimpan
+            $notif = [
+                'type' => "success",
+                "text" => "Data berhasil dihapus !"
+            ];
+        } catch(Exception $err){
+            // Notif Jika gagal menyimpan
+            $notif = [
+                'type' => "danger",
+                "text" => "Data gagal dihapus !"
+            ];
+        }
+
+        return back()->with('notif',$notif);
     }
 }
