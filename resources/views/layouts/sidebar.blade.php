@@ -62,12 +62,21 @@
 
                         {{-- Categories --}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('category.index') }}" class="nav-link">
                                 <i class="nav-icon far fa-circle"></i>
                                 <p>Categories</p>
                             </a>
                         </li>
                         {{-- End Categories --}}
+
+                        {{-- Kitchens --}}
+                        <li class="nav-item">
+                          <a href="{{ route('kitchen.index') }}" class="nav-link">
+                              <i class="nav-icon far fa-circle"></i>
+                              <p>Kitchens</p>
+                          </a>
+                      </li>
+                      {{-- End Kitchens --}}
                     </ul>
                 </li>
                 {{-- End Menu --}}

@@ -11,7 +11,7 @@ class UpdateKitchenRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,16 @@ class UpdateKitchenRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "nm_kitchen" => "required|unique:kitchen,nm_kitchen,".$this->kitchen->id."|max:20"
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            "nm_kitchen.required" => "Kitchen name must be filled in",
+            "nm_kitchen.unique" => "Kitchen name is already use",
+            "nm_kitchen.max" => "Max 20 characters",
         ];
     }
 }

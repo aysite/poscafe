@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KitchenController;
 use App\Http\Controllers\CategoryController;
 
 
@@ -21,3 +22,6 @@ Route::get('/', function () {
 
 // Route Category
 Route::resource('category',CategoryController::class);
+
+// Route Kitchen
+Route::resource('kitchen',KitchenController::class);
