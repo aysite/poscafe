@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\KitchenController;
 use App\Http\Controllers\CategoryController;
 
@@ -25,3 +26,6 @@ Route::resource('category',CategoryController::class);
 
 // Route Kitchen
 Route::resource('kitchen',KitchenController::class);
+
+// Route Menu
+Route::resource('menu',MenuController::class);

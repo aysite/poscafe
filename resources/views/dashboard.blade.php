@@ -4,6 +4,7 @@
 @section('page-title', 'Dashboard')
 
 @section('content')
+
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Example</h3>

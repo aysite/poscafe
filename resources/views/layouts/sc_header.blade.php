@@ -8,3 +8,4 @@
 <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 <!-- Theme style -->
 <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/custom.css') }}">

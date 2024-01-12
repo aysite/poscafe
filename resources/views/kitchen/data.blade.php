@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
-@section('title', 'Dashboard')
-@section('page-title', 'Dashboard')
+@section('title', $title)
+@section('page-title', $page_title)
 
 @section('content')
 
@@ -13,6 +13,7 @@
         </div>
     @endif
     {{-- End Notification --}}
+
     <div class="row">
         <div class="col-md-4">
             <div class="card">
@@ -35,7 +36,7 @@
                             <label for="nm_kitchen" class="form-label">Kitchen Name</label>
                             <input type="text" name="nm_kitchen" id="nm_kitchen"
                                 class="form-control @error('nm_kitchen') is-invalid @enderror"
-                                value="{{ @old('nm_kitchen') ? @old('nm_kitchen') : @$rsCategory->nm_kitchen }}">
+                                value="{{ @old('nm_kitchen') ? @old('nm_kitchen') : @$rsKitchen->nm_kitchen }}">
                             @error('nm_kitchen')
                                 <div class="invalid-feedback">
                                     {{ $message }}

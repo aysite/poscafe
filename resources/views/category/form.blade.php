@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
-@section('title', 'Dashboard')
-@section('page-title', 'Dashboard')
+@section('title', $title)
+@section('page-title', $page_title)
 
 @section('content')
     <div class="row">

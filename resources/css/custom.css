@@ -1,0 +1,21 @@
+/* Custom CSS */
+
+.thumbnail-small {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    -o-object-fit: cover;
+    object-position: cover;
+    -o-object-position: cover;
+}
+
+.thumbnail-menu {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    -o-object-fit: cover;
+    object-position: cover;
+    -o-object-position: cover;
+}

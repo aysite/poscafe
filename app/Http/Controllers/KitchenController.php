@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kitchen;
 use App\Http\Requests\StoreKitchenRequest;
 use App\Http\Requests\UpdateKitchenRequest;
+use Exception;
 
 class KitchenController extends Controller
 {
