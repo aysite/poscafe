@@ -165,13 +165,13 @@ class MenuController extends Controller
         try {
             Menu::find($menu->id)->delete();
 
-            // Notif Jika Berhasil Disimpan
+            // Notif Jika Berhasil Dihapus
             $notif = [
                 'type' => "success",
                 "text" => "Data berhasil dihapus !"
             ];
         } catch(Exception $err){
-            // Notif Jika gagal menyimpan
+            // Notif Jika gagal Dihapus
             $notif = [
                 'type' => "danger",
                 "text" => "Data gagal dihapus !"

@@ -22,7 +22,7 @@ class StoreKitchenRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "nm_kitchen" => "required|unique:kitchen|max:20"
+            "nm_kitchen" => "required|unique:kitchens|max:20"
         ];
     }
 

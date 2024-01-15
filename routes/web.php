@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\TableController;
 use App\Http\Controllers\KitchenController;
 use App\Http\Controllers\CategoryController;
 
@@ -29,3 +30,8 @@ Route::resource('kitchen',KitchenController::class);
 
 // Route Menu
 Route::resource('menu',MenuController::class);
+
+// Route Table
+Route::get('table',[TableController::class,'index'])->name('table.index');
+Route::post('table/save',[TableController::class,'save'])->name('table.save');
+Route::delete('table/{table}',[TableController::class,'destroy'])->name('table.destroy');

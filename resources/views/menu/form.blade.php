@@ -33,12 +33,13 @@
 
                     {{-- Body --}}
                     <div class="card-body">
-                        @if (@$rsMenu->foto_menu != '')
+                        @if (@$rsMenu->foto_menu!="")
+                        <img id="foto_menu" class="thumbnail-menu" src="{{ asset('uploads/menu/'.@$rsMenu->foto_menu) }}" alt="{{ @$rsMenu->nm_menu }}">
                         @else
+                        <img id="foto_menu" class="thumbnail-menu" src="{{ asset('img/no-menu-image.png') }}" alt="{{ @$rsMenu->nm_menu }}">
                         @endif
                         <input class="d-none" type="file" name="file_foto" id="file_foto">
-                        <input class="d-none" type="file" name="old_foto" id="old_foto"
-                            value="{{ @$rsMenu->foto_menu }}">
+                        <input class="d-none" type="text" name="old_foto" id="old_foto" value="{{ @$rsMenu->foto_menu }}">
                     </div>
                     {{-- End Body --}}
                 </div>

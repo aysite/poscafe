@@ -22,7 +22,7 @@ class UpdateKitchenRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "nm_kitchen" => "required|unique:kitchen,nm_kitchen,".$this->kitchen->id."|max:20"
+            "nm_kitchen" => "required|unique:kitchens,nm_kitchen,".$this->kitchen->id."|max:20"
         ];
     }
 
