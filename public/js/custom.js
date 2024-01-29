@@ -20,6 +20,16 @@ $(document).ready(function(){
     $("#file_foto").change(function () {
         setImage(this, "#foto_menu");
     })
+
+    // Klik Foto User
+    $("#foto").click(function () {
+        $("#file_foto").click();
+    })
+    
+    // Ketika file input change
+    $("#file_foto").change(function(){
+        setImage(this, "#foto");
+    })
 })
 
 // Read Image

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\TableController;
 use App\Http\Controllers\KitchenController;
 use App\Http\Controllers\CategoryController;
@@ -17,6 +18,8 @@ use App\Http\Controllers\CategoryController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
 
 Route::get('/', function () {
     return view('dashboard');
@@ -35,3 +38,9 @@ Route::resource('menu',MenuController::class);
 Route::get('table',[TableController::class,'index'])->name('table.index');
 Route::post('table/save',[TableController::class,'save'])->name('table.save');
 Route::delete('table/{table}',[TableController::class,'destroy'])->name('table.destroy');
+
+// Route User
+Route::resource('user',UserController::class);
+
+
+

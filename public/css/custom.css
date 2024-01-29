@@ -19,3 +19,31 @@
     object-position: cover;
     -o-object-position: cover;
 }
+
+
+
+/* 2 */
+
+.thumbnail-user {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    -o-object-fit: cover;
+    object-position: center;
+    -o-object-position: center;
+}
+
+.user-avatar {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin-left: 5px;
+    object-fit: cover;
+    -o-object-fit: cover;
+    object-position: center;
+    -o-object-position: center;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border: 1px solid #ccc;
+}
