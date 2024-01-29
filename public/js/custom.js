@@ -69,8 +69,10 @@ function setFormTable(mode,data=null){
 }
 
 
-//
-Transaksi
+// Transaksi
+var kd_cus = 0
+var id_meja = 0
+var jns_layanan = "Dine In"
 var items = []
 var diskon = 0
 var total = 0
@@ -149,13 +151,51 @@ function listMenu(){
     total += (rsMenu.harga_menu * rsMenu.jumlah_menu)
     })
     
-    total_diskon = total - diskon
+    total_diskon = total - (Math.round(diskon * total))
     tarif_layanan = total_diskon * (5/100)
     tax = (total_diskon + tarif_layanan) * (10/100)
     gtotal = total_diskon + tax
 
     $("#total").html(total.toLocaleString('id-ID'))
-    $("#diskon").html(Math.round(diskon).toLocaleString('id-ID'))
+    $("#diskon").html(Math.round(diskon*total).toLocaleString('id-ID'))
     $("#tax").html(Math.round(tax).toLocaleString('id-ID'))
     $("#gtotal").html(Math.round(gtotal).toLocaleString('id-ID'))
+}
+
+
+function delMenu(e){
+    idxMenu = $(e).parent().attr("idx")
+
+    items.splice(idxMenu,1)
+
+    listMenu()
+}
+
+function setCustomer (customer){
+    rsCustomer = JSON.parse(customer)
+    
+    // Set Nama Customer
+    $("#nm_customer").html(rsCustomer.nm_cus)
+
+    kd_cus = rsCustomer.kd_cus
+    if(kd_cus==0){ diskon = 0} else { diskon = 0.05 }
+    if(items.length > 0){ updateTotal() }
+    
+    // Close Modal
+    $('#modal-customer').modal ('hide')
+}
+
+function setLayanan (layanan){
+    if(layanan=="Take Away"){
+        $("#layanan").html(layanan)
+        jns_layanan = "Take Away"
+    } else {
+        rsMeja = JSON.parse(layanan)
+        $("#layanan").html("Meja#"+rsMeja.no_table)
+        jns_layanan = "Dine In"
+        id_meja = rsMeja.id
+    }
+
+    // Close Modal
+    $('#modal-meja').modal('hide')
 }

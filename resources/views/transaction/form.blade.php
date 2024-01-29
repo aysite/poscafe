@@ -54,8 +54,8 @@
                         <ol class="list-group list-group-numbered">
                             <li class="list-group-item">
                                 <div class="row">
-                                    <div class="col-md-7"><strong>Fahrizal Saputra</strong></div>
-                                    <div class="col-md-5 text-right"><strong>Meja#MN01</strong></div>
+                                    <div class="col-md-7" data-toggle="modal" data-target="#modal-customer"><strong id="nm_customer">General Customer</strong></div>
+                                    <div class="col-md-5 text-right" data-toggle="modal" data-target="$modal-meja"><strong>Meja#MN01</strong></div>
                                 </div>
                             </li>
                         </ol>
@@ -119,4 +119,105 @@
         <span class="price_menu badge text-danger">30.000</span>
     </li>
     {{-- End Template --}}
+
+    {{-- Data Customer --}}
+<div class="modal fade" id="modal-customer">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-success">
+                <h4 class="modal-title">Member</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="dtMenu" class="tbData table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Kode</th>
+                            <th>Nama</th>
+                            <th>Alamat</th>
+                            <th>Poin</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($dtCustomer as $rsCustomer)
+                            <tr>
+                                <td>{{ $rsCustomer->kd_cus }}</td>
+                                <td>{{ $rsCustomer->nm_cus }}</td>
+                                <td>{{ $rsCustomer->alamat_cus }} <br /> <strong>Telp :</strong> {{ $rsCustomer->telp_cus }}</td>
+                                <td>{{ $rsCustomer->poin_cus }}</td>
+                                <td>
+                                    <button class="btn btn-primary btn-xs" onclick="setCustomer('{{ $rsCustomer }}')">CHOOSE</button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+{{-- Data Meja --}}
+<div class="modal fade" id="modal-meja">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header bg-success">
+                <h4 class="modal-title">Table</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                        aria-hidden="true">&times;</span> </button>
+            </div>
+            <div class="modal-body">
+                <table id="dtMenu" class="tbData table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>No Meja</th>
+                            <th>Kapasitas</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Take Away</td>
+                            <td>-</td>
+                            <td><span class="badge_bg-success">Available</span></td>
+                            <td>
+                                <button class="btn btn-primary btn-xs" onclick="setLayanan('Take Away')">CHOOSE</button>
+                            </td>
+                        </tr>
+                        @foreach ($dtMeja as $rsMeja)
+                            <tr>
+                                <td>{{ $rsMeja->no_table }}</td>
+                                <td>{{ $rsMeja->capacity_table }}</td>
+                                <td>
+                                    @if ($rsMeja->status_table == 1)
+                                        <span class="badge bg-success">Available</span>
+                                    @else
+                                        <span class="badge_bg-danger">Unavailable</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($rsMeja->status_table == 1)
+                                        <button class="btn btn-primary btn-xs"
+                                            onclick="setLayanan('{{ $rsMeja }}')">CHOOSE</button>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
 @endsection

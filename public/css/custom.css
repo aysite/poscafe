@@ -121,6 +121,19 @@
     padding: 0 10px 10px 10px;
     }
 
+/* Tombol Hapus */
+#transaksi #detail .detail-order .order-list-item button{
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+    display: none;
+}
+
+#transaksi #detail .detail-order .order-list-item:hover button{
+    display: block;
+}
+/* End Tombol Hapus */
+
 #transaksi #detail .detail-order .order-list-item h6 {
     font-size: 16px;
     }
