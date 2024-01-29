@@ -47,3 +47,117 @@
     -webkit-border-radius: 100%;
     border: 1px solid #ccc;
 }
+
+/* 3 */
+
+
+/* Form Transaksi */
+#transaksi {
+    position: relative;
+    }
+
+#transaksi #menu .card {
+    height: 97vh;
+    box-shadow: unset;
+    }
+
+#transaksi #menu .card .card-body {
+    background-color: #f1fff9; padding: 10px;
+    }
+
+#transaksi #menu .menu-item img {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    -o-object-fit: cover;
+    object-position: center;
+    -o-object-position: center;
+    }
+
+#transaksi #menu .menu-item .detail-menu-item {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8); border-bottom: 2px solid #3d9970;
+    }
+    
+#transaksi #menu .menu-item .detail-menu-item h5 {
+    color: #3d9970;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+    }
+    
+#transaksi #menu .menu-item .detail-menu-item p {
+    font-weight: 600;
+    margin: 0;
+    }
+
+    /* Order Detail */
+#transaksi #detail {
+    padding-right: 0;
+    position: relative;
+    }
+
+#transaksi #detail .card {
+    height: 97vh;
+    }
+
+#transaksi #detail .detail-order > h5 {
+    background-color: red;
+    padding: 10px;
+    }
+
+#transaksi #detail .detail-order .order-list {
+    height: 420px;
+    overflow-y: scroll;
+    }
+
+#transaksi #detail .detail-order .order-list-item {
+    margin: 5px;
+    padding: 0 10px 10px 10px;
+    }
+
+#transaksi #detail .detail-order .order-list-item h6 {
+    font-size: 16px;
+    }
+
+#transaksi #detail .detail-order .order-list-item .qty_menu {
+    width: 20%;
+    }
+
+#transaksi #detail .detail-order .order-list-item .input-group-text {
+    padding: 2px 5px;
+    font-size: 12px;
+    height: 25px;
+    }
+
+#transaksi #detail .detail-order .order-list-item input {
+    padding: 3px 5px 5px 5px;
+    font-size: 14px;
+    height: 25px;
+    text-align: center;
+    }
+
+#transaksi #detail .detail-order .order-list-item .price_menu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    text-align: right;
+    }
+
+#transaksi #detail .card-footer {
+    padding: 0;
+    }
+
+#transaksi #detail .card-footer .row {
+    margin: 0;
+    }
+    
+#transaksi #detail .card-footer .list-group-item {
+    padding: 2px 15px;
+    }

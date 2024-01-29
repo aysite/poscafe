@@ -48,4 +48,5 @@ Route::get('login',[AuthController::class,'index'])->name('auth.login');
 Route::get('logout',[AuthController::class,'cek_logout'])->name('auth.logout');
 Route::get('auth',[AuthController::class,'cek_login'])->name('authentication');
 
-
+// Transaction
+Route::get('transaction/form',[TransactionController::class,'create'])->name('trans.create');

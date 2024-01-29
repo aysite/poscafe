@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use App\Models\Transaction;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
 
 class TransactionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public $title = "Transactions";
+
     public function index()
     {
         //
@@ -21,7 +21,12 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            "title" => $this->title,
+            "dtMenu" => Menu::all(),
+        ];
+
+        return view('transaction.form',$data);
     }
 
     /**
