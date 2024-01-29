@@ -62,58 +62,7 @@
                         <div class="detail-order">
                             <h5 class="bg-secondary">ORDER LIST</h5>
                             <ul class="order-list list-group list-group-flush">
-                                <li class="order-list-item list-group-item">
-                                    <h6 class="nm_menu">Nasi Goreng Hongkong</h6>
-                                    <div class="input-group qty_menu">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-olive btn-minus"><i class="fas fa-minus"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control" aria-label="Number of Menu">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text bg-olive btn-plus"><i class="fas fa-plus"></i></span>
-                                        </div>
-                                    </div>
-                                    <span class="price_menu badge text-danger">30.000</span>
-                                </li>
-                                <li class="order-list-item list-group-item">
-                                    <h6 class="nm_menu">Cumi Crispy</h6>
-                                    <div class="input-group qty_menu">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-olive btn-minus"><i class="fas fa-minus"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control" aria-label="Number of Menu">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text bg-olive btn-plus"><i class="fas fa-plus"></i></span>
-                                        </div>
-                                    </div>
-                                    <span class="price_menu badge text-danger">20.000</span>
-                                </li>
-                                <li class="order-list-item list-group-item">
-                                    <h6 class="nm_menu">Es Teh Lemon</h6>
-                                    <div class="input-group qty_menu">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-olive btn-minus"><i class="fas fa-minus"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control" aria-label="Number of Menu">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text bg-olive btn-plus"><i class="fas fa-plus"></i></span>
-                                        </div>
-                                    </div>
-                                    <span class="price_menu badge text-danger">17.000</span>
-                                </li>
-                                <li class="order-list-item list-group-item">
-                                    <h6 class="nm_menu">Es Teh Lemon</h6>
-                                    <div class="input-group qty_menu">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-olive btn-minus"><i class="fas fa-minus"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control" aria-label="Number of Menu">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text bg-olive btn-plus"><i class="fas fa-plus"></i></span>
-                                        </div>
-                                    </div>
-                                    <span class="price_menu badge text-danger">17.000</span>
-                                </li>
+                                {{-- Item --}}
                             </ul>
                         </div>
                     </div>
@@ -122,23 +71,23 @@
                             <li class="list-group-item">
                                 <div class="row">
                                     <div class="col-md-7"><strong>Total</strong></div>
-                                    <div class="col-md-5 text-right">25.000</div>
+                                    <div id="total" class="col-md-5 text-right">0</div>
                                 </div>
                             </li>
                             <li class="list-group-item">
                                 <div class="row">
                                     <div class="col-md-7"><strong>Diskon</strong></div>
-                                    <div class="col-md-5 text-right">5.000</div>
+                                    <div id="diskon" class="col-md-5 text-right">0</div>
                                 </div>
                             </li>
                             <li class="list-group-item">
                                 <div class="row">
                                     <div class="col-md-7"><strong>Tax (11%)</strong></div>
-                                    <div class="col-md-5 text-right">1.500</div>
+                                    <div id="tax" class="col-md-5 text-right">0</div>
                                 </div>
                             </li>
                             <li class="list-group-item">
-                                <h4 class="text-center">21.500</h4>
+                                <h4 id="gtotal" class="text-center">0</h4>
                             </li>
                         </ul>
                         <div class="row">
@@ -154,4 +103,20 @@
             </div>
         </div>
     </div>
+
+    {{-- Template --}}
+    <li id="template" class="d-none order-list-item list-group-item">
+        <h6 class="nm_menu">Nasi Goreng Magetan</h6>
+        <div class="input-group qty_menu">
+            <div class="input-group-prepend" onclick="updateJumlah(this)">
+                <span class="input-group-text bg-olive btn-minus"><i class="fas fa-minus"></i></span>
+            </div>
+            <input type="text" class="jumlah form-control" aria-label="Number of Menu" onchange="updateJumlah(this)">
+            <div class="input-group-append" onclick="updateJumlah(this)">
+                <span class="input-group-text bg-olive btn-plus"><i class="fas fa-plus"></i></span>
+            </div>
+        </div>
+        <span class="price_menu badge text-danger">30.000</span>
+    </li>
+    {{-- End Template --}}
 @endsection
