@@ -12,10 +12,14 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+              @if(@Auth::user()->foto)
+                <img src="{{ asset('uploads/user/'.Auth::user()->foto) }}" class="img-circle elevation-2" alt="User Image">
+              @else
+                <img src="{{ asset('img/avatar.png') }}" class="img-circle elevation-2" alt="User Image">
+              @endif
             </div>
             <div class="info">
-                <a href="" class="d-block">Uchiha Itachi</a>
+                <a href="" class="d-block">{{ @Auth::user()->name }} | {{ Str::ucfirst(@Auth::user()->role) }}</a>
             </div>
         </div>
 
@@ -35,7 +39,7 @@
 
                 {{-- Menu --}}
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="javascript:void(0)" class="nav-link">
                         <i class="nav-icon fas fa-utensils"></i>
                         <p>Menu<i class="right fas fa-angle-left"></i>
                         </p>
@@ -44,7 +48,7 @@
 
                         {{-- Add New --}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('menu.create') }}" class="nav-link">
                                 <i class="fas fa-plus nav-icon"></i>
                                 <p>Add New</p>
                             </a>
@@ -53,7 +57,7 @@
 
                         {{-- List --}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('menu.index') }}" class="nav-link">
                                 <i class="nav-icon far fa-circle"></i>
                                 <p>List</p>
                             </a>
@@ -140,7 +144,7 @@
 
               {{-- Users --}}
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('user.index') }}" class="nav-link">
                   <i class="nav-icon fas fa-users"></i>
                   <p>Users</p>
                 </a>
@@ -167,7 +171,7 @@
 
               {{-- Logout --}}
               <li class="nav-item">
-                <a href="#" class="nav-link text-danger">
+                <a href="{{ route('auth.logout') }}" class="nav-link text-danger">
                   <i class="nav-icon fas fa-sign-out-alt"></i>
                   <p>Logout</p>
                 </a>

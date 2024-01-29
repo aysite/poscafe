@@ -71,8 +71,8 @@
                         <div class="mb-3">
                             <label for="status" class="form-label">Status</label>
                             <select name="status" id="status" class="form-control @error('status') is-invalid @enderror" value="{{ old('status') ? old('status') : @$rsUser->status }}">
-                                <option {{ @$rsUser->status == 1 || old('status') == 1 ? "selected" : value = "0" }}>Non Aktif</option>
-                                <option {{ @$rsUser->status == 0 || old('status') == 0 ? "selected" : value = "1" }}>Aktif</option>
+                                <option {{ @$rsUser->status == 1 || old('status') == 1 ? "selected" : "" }} value = "1">Aktif</option>
+                                <option {{ @$rsUser->status == 0 || old('status') == 0 ? "selected" : "" }} value = "0">Non Aktif</option>
                             </select>
                             @error('status')
                                 <div class="invalid-feedback">

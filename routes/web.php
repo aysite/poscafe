@@ -5,6 +5,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TableController;
 use App\Http\Controllers\KitchenController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 
 
@@ -42,5 +43,9 @@ Route::delete('table/{table}',[TableController::class,'destroy'])->name('table.d
 // Route User
 Route::resource('user',UserController::class);
 
+// Route Login, Cek Login, Logout
+Route::get('login',[AuthController::class,'index'])->name('auth.login');
+Route::get('logout',[AuthController::class,'cek_logout'])->name('auth.logout');
+Route::get('auth',[AuthController::class,'cek_login'])->name('authentication');
 
 
