@@ -3,6 +3,9 @@
 @section('title', 'Transactions')
 
 @section('content')
+
+    <div id="loader"><i class="fas fa-cenciargo-ball fa-spin"></i></div>
+
     <div id="transaksi">
         <div class="row" class="m-0">
             <div id="menu" class="col-md-8 p-0">
@@ -43,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <div id="detail" class="col-md-4">
+            <div id="detail" class="col-md-4" csrf="{{ csrf_token() }}" url="{{ route('trans.store') }}">
                 <div class="card">
                     <div class="card-header bg-olive">
                         <h4 class="card-title">
@@ -54,7 +57,10 @@
                         <ol class="list-group list-group-numbered">
                             <li class="list-group-item">
                                 <div class="row">
-                                    <div class="col-md-7" data-toggle="modal" data-target="#modal-customer"><strong id="nm_customer">General Customer</strong></div>
+                                    <div class="col-md-7">
+                                        <strong id="nm_customer" data-toggle="modal" data-target="#modal-customer">General Customer</strong>
+                                        <input type="text" name="nm_customer" id="tnm_customer" class="form-control" placeholder="Atas Nama" onchange="setNamaCustomer(this)">
+                                    </div>
                                     <div class="col-md-5 text-right" data-toggle="modal" data-target="$modal-meja"><strong>Meja#MN01</strong></div>
                                 </div>
                             </li>
@@ -92,7 +98,7 @@
                         </ul>
                         <div class="row">
                             <div class="col-md-6">
-                                <button class="btn bg-olive btn-block">SIMPAN</button>
+                                <button class="btn bg-olive btn-block" onclick="saveTrans()">SIMPAN</button>
                             </div>
                             <div class="col-md-6">
                                 <button class="btn btn-warning btn-block">PRINT</button>

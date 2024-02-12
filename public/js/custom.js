@@ -71,6 +71,7 @@ function setFormTable(mode,data=null){
 
 // Transaksi
 var kd_cus = 0
+var nm_cus = "General"
 var id_meja = 0
 var jns_layanan = "Dine In"
 var items = []
@@ -178,11 +179,25 @@ function setCustomer (customer){
     $("#nm_customer").html(rsCustomer.nm_cus)
 
     kd_cus = rsCustomer.kd_cus
+    nm_cus = rsCustomer.nm_cus
     if(kd_cus==0){ diskon = 0} else { diskon = 0.05 }
     if(items.length > 0){ updateTotal() }
+
+    // Set Nama Customer
+    if(kd_cus==0){
+        $("#tnm_customer").val("")
+        $("#tnm_customer").fadeIn()
+    } else {
+        $("#tnm_customer").fadeOut()
+    }
     
     // Close Modal
-    $('#modal-customer').modal ('hide')
+    $('#modal-customer').modal('hide')
+}
+
+function setNamaCustomer(e){
+    nm_cus = $(e).val()
+    console.log(nm_cus)
 }
 
 function setLayanan (layanan){
@@ -198,4 +213,74 @@ function setLayanan (layanan){
 
     // Close Modal
     $('#modal-meja').modal('hide')
+}
+
+function saveTrans(){
+    // Validasi
+    if(items.length==0){
+        alert('Maaf Menu Masih Kosong !')
+        return false;
+    }
+    if(jns_layanan=="Dine In" && id_meja == 0){
+        alert('Maaf Meja Belum di pilih !')
+        return false;
+    }
+    
+    // Data Simpan
+    data_store = {
+    "kd_cus"   : kd_cus,
+    "nm_cus"   : nm_cus, 
+    "id_meja"  : id_meja,
+    "layanan"  : jns_layanan,
+    "gtotal"   : gtotal,
+    "diskon"   : diskon,
+    "blayanan" : tarif_layanan,
+    "tax"      : tax,
+    "_token"   : $("#detail").attr('csrf'),
+    "detail"   : items // Data Menu yang di Pesan
+}
+    
+    $.ajax({
+        beforeSend:function(){
+            $("#loader").css("display","flex").fadeIn()
+    },
+        type: 'POST',
+        dataType:'json',
+        url:$("#detail").attr('url'),
+        data:data_store,
+        success:function(data) {
+            console.log(data) 
+            if(data.status==200){
+                resetTrans()
+                $("#loader").fadeOut(function(){
+                alert(data.text)
+                })
+            }
+        },
+        error: function(data){
+            console.log(data)
+        }
+    })
+}
+
+    function resetTrans(){
+    kd_cus = 0
+    nm_cus = "General Customer"
+    id_meja = 0
+    jns_layanan = "Dine In"
+    items = []
+    diskon = 0
+    total = 0
+    gtotal = 0
+    tarif_layanan = 0
+    tax = 0 
+
+    $("#tnm_customer").val("")
+    $("#nm_customer").html(nm_cus)
+    $("#layanan").html(jns_layanan)
+    $(".order-list").html('')
+    $("#total").html(0)
+    $("#diskon").html(0)
+    $("#tax").html(0)
+    $("#gtotal").html(0)
 }

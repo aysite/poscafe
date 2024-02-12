@@ -28,25 +28,22 @@ Route::get('/', function () {
 
 // Route Category
 Route::resource('category',CategoryController::class);
-
-// Route Kitchen
 Route::resource('kitchen',KitchenController::class);
-
-// Route Menu
 Route::resource('menu',MenuController::class);
+Route::resource('user',UserController::class);
 
 // Route Table
 Route::get('table',[TableController::class,'index'])->name('table.index');
 Route::post('table/save',[TableController::class,'save'])->name('table.save');
 Route::delete('table/{table}',[TableController::class,'destroy'])->name('table.destroy');
 
-// Route User
-Route::resource('user',UserController::class);
+// Transaction
+Route::get('transaction/form',[TransactionController::class,'create'])->name('trans.create');
+Route::post('transaction/save',[TransactionController::class,'store'])->name('trans.store');
 
 // Route Login, Cek Login, Logout
 Route::get('login',[AuthController::class,'index'])->name('auth.login');
 Route::get('logout',[AuthController::class,'cek_logout'])->name('auth.logout');
 Route::get('auth',[AuthController::class,'cek_login'])->name('authentication');
 
-// Transaction
-Route::get('transaction/form',[TransactionController::class,'create'])->name('trans.create');
+
