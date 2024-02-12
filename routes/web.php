@@ -7,6 +7,7 @@ use App\Http\Controllers\TableController;
 use App\Http\Controllers\KitchenController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TransactionController;
 
 
 /*
@@ -38,7 +39,10 @@ Route::post('table/save',[TableController::class,'save'])->name('table.save');
 Route::delete('table/{table}',[TableController::class,'destroy'])->name('table.destroy');
 
 // Transaction
+Route::get('transaction',[TransactionController::class,'index'])->name('trans.index');
 Route::get('transaction/form',[TransactionController::class,'create'])->name('trans.create');
+Route::get('transaction/status/{id_trans}/{status}',[TransactionController::class,'update'])->name('trans.status');
+Route::get('transaction/cetak/{no_trans}',[TransactionController::class,'cetak'])->name('trans.cetak');
 Route::post('transaction/save',[TransactionController::class,'store'])->name('trans.store');
 
 // Route Login, Cek Login, Logout

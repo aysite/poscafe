@@ -8,6 +8,7 @@ use App\Models\Detail;
 use App\Models\Customer;
 use App\Models\Transaction; use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
 
@@ -17,7 +18,17 @@ class TransactionController extends Controller
 
     public function index()
     {
-        //
+        $data = [
+            "title" => $this->title,
+            "page_title"  => $this->title,
+            "dtTrans" => DB::table('transaction')
+            ->join("users","transactions.id_cashier","=","users.id")
+            ->leftJoin("tables","transactions.id_table","=","tables.id")
+            ->select("transactions.*","users.name","tables.no_table")
+            ->get()
+        ];
+
+        return view('transaction.data',$data);
     }
 
 
@@ -114,16 +125,44 @@ class TransactionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTransactionRequest $request, Transaction $transaction)
+    public function update(Request $request)
     {
-        //
+        try {
+            Transaction::where("id",$request->id_trans)->update([
+                "status_trans" => $request->status
+            ]);
+
+            $notif = [
+                'type' => "success",
+                "text" => "Data berhasil disimpan !"
+            ];
+
+        } catch(Exception $err){
+            $notif = [
+                'type' => "danger",
+                "text" => "Data gagal disimpan !"
+            ];
+        }
+
+        return redirect()->back()->with('notif',$notif);   
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Transaction $transaction)
+    public function cetak(Request $request)
     {
-        //
+        $data = [
+            "rsTrans" => DB::table('transactions')
+            ->join("users","transactions.id_cashier","=","users.id")
+            ->leftJoin("tables","transactions.id_table","=","tables.id")
+            ->select("transactions.*","users.name","tables.no_table")
+            ->where("transactions.no_trans","=",$request->no_trans)
+            ->first(),
+            "details" => Detail::where('no_trans',$request->no_trans)->get()
+        ];
+
+        return view('transaction.nota',$data);
+        
     }
 }
