@@ -22,7 +22,7 @@
                                 <div class="menu-item col-sm-3 {{ "cat-".$rsMenu->id_cat_menu }}" onclick="addMenu('{{ $rsMenu }}')">
                                     <div class="position-relative">
                                         @if ($rsMenu->foto_menu)
-                                            <img src="{{ asset('uploads/menu/' . $rsMenu->foto_menu) }}" alt="Photo 1"
+                                            <img src="{{ asset('uploads/menu/'.$rsMenu->foto_menu) }}" alt="Photo 1"
                                                 class="img-fluid">
                                         @else
                                             <img src="{{ asset('img/no-menu-image.png') }}" alt="Photo 1"
@@ -47,7 +47,7 @@
                     <div id="category" class="card-footer">
                         <button class="btn btn-warning" onclick="setCategory('all')">All</button>
                         @foreach ($dtCategory as $rsCat)
-                            <button onclick="setCategory('.cat-{{ $rsCat-id }}')" class="btn btn-primary">{{ $rsCat->nm_category }}</button>
+                            <button onclick="setCategory('.cat-{{ $rsCat->id }}')" class="btn btn-primary">{{ $rsCat->nm_category }}</button>
                         @endforeach
                     </div>
                 </div>

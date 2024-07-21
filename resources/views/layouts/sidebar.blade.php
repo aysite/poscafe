@@ -38,8 +38,8 @@
                 {{-- End Dashnoard --}}
 
                 {{-- Menu --}}
-                <li class="nav-item">
-                    <a href="javascript:void(0)" class="nav-link">
+                <li class="nav-item {{ request()->is(["menu","menu/*","category","kitchen"]) ? 'menu-is-opening menu-open' : '' }}">
+                    <a href="javascript:void(0)" class="nav-link {{ request()->is(["menu","menu/*","category","kitchen"]) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-utensils"></i>
                         <p>Menu<i class="right fas fa-angle-left"></i>
                         </p>
@@ -48,7 +48,7 @@
 
                         {{-- Add New --}}
                         <li class="nav-item">
-                            <a href="{{ route('menu.create') }}" class="nav-link">
+                            <a href="{{ route('menu.create') }}" class="nav-link {{ request()->is(["menu/create"]) ? 'active' : '' }}">
                                 <i class="fas fa-plus nav-icon"></i>
                                 <p>Add New</p>
                             </a>
@@ -57,7 +57,7 @@
 
                         {{-- List --}}
                         <li class="nav-item">
-                            <a href="{{ route('menu.index') }}" class="nav-link">
+                            <a href="{{ route('menu.index') }}" class="nav-link {{ request()->is(["menu"]) ? 'active' : '' }}">
                                 <i class="nav-icon far fa-circle"></i>
                                 <p>List</p>
                             </a>
@@ -66,7 +66,7 @@
 
                         {{-- Categories --}}
                         <li class="nav-item">
-                            <a href="{{ route('category.index') }}" class="nav-link">
+                            <a href="{{ route('category.index') }}" class="nav-link {{ request()->is(["category"]) ? 'active' : '' }}">
                                 <i class="nav-icon far fa-circle"></i>
                                 <p>Categories</p>
                             </a>
@@ -75,21 +75,12 @@
 
                         {{-- Kitchens --}}
                         <li class="nav-item">
-                          <a href="{{ route('kitchen.index') }}" class="nav-link">
+                          <a href="{{ route('kitchen.index') }}" class="nav-link {{ request()->is(["kitchen"]) ? 'active' : '' }}">
                               <i class="nav-icon far fa-circle"></i>
                               <p>Kitchens</p>
                           </a>
                       </li>
                       {{-- End Kitchens --}}
-
-                        {{-- Menu --}}
-                        <li class="nav-item">
-                          <a href="{{ route('menu.index') }}" class="nav-link">
-                              <i class="nav-icon far fa-circle"></i>
-                              <p>Menu</p>
-                          </a>
-                      </li>
-                      {{-- End Menu --}}
                     </ul>
                 </li>
                 {{-- End Menu --}}
@@ -105,7 +96,7 @@
 
                 {{-- Members --}}
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route('user.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-id-card"></i>
                     <p>Members</p>
                   </a>
