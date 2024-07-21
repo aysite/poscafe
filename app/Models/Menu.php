@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Kitchen;
+use App\Models\Category;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,10 +12,10 @@ class Menu extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['kd_menu','nm_menu','id_cat_menu','id_kitchen_menu','satuan_menu','stok_menu','desc_menu','foto_menu'];
+    protected $fillable = ['kd_menu','nm_menu','id_cat_menu','harga_menu','id_kitchen_menu','satuan_menu','stok_menu','desc_menu','foto_menu'];
 
     // Get Data dari Table Category
-    public function Category (): BelongsTo
+    public function Category(): BelongsTo
     {
         return $this->belongsTo(Category::class,'id_cat_menu','id');
     }

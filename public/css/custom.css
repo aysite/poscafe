@@ -6,8 +6,8 @@
     height: 90px;
     object-fit: cover;
     -o-object-fit: cover;
-    object-position: cover;
-    -o-object-position: cover;
+    object-position: center;
+    -o-object-position: center;
 }
 
 .thumbnail-menu {
@@ -16,8 +16,8 @@
     height: 300px;
     object-fit: cover;
     -o-object-fit: cover;
-    object-position: cover;
-    -o-object-position: cover;
+    object-position: center;
+    -o-object-position: center;
 }
 
 
@@ -62,7 +62,7 @@
     }
 
 #transaksi #menu .card .card-body {
-    background-color: #f1fff9; padding: 10px;
+    background-color: #f1fff9; padding: 10px; height: 100vh; overflow-y: auto;
     }
 
 #transaksi #menu .menu-item img {

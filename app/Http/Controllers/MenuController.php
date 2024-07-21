@@ -104,11 +104,13 @@ class MenuController extends Controller
         $data = [
             "title" => $this->title,
             "page_title" => $this->title,
-            "edit" => true,
-            "rsCategory" => Category::where("id",$category->id)->first()
+            "rsMenu" => Menu::where("id",$menu->id)->first(),
+            "dtCategory" => Category::all(),
+            "dtKitchen" => Kitchen::all(),
+            "edit" => true
         ];
 
-        return view('category.form',$data);
+        return view('menu.form',$data);
     }
 
     /**
@@ -128,7 +130,7 @@ class MenuController extends Controller
             }
             
             // Simpan Data Menu
-            Menu::find($menu-id)->update([
+            Menu::find($menu->id)->update([
             "kd_menu" => $request->input('kd_menu'),
             "nm_menu" => $request->input('nm_menu'),
             "id_cat_menu" => $request->input('id_cat_menu'),

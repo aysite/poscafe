@@ -5,12 +5,15 @@ use Exception;
 use App\Models\Menu;
 use App\Models\Table;
 use App\Models\Detail;
+use App\Models\Category;
 use App\Models\Customer;
-use App\Models\Transaction; use Illuminate\Support\Str;
+use App\Models\Transaction;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
+
 
 class TransactionController extends Controller
 {
@@ -21,7 +24,7 @@ class TransactionController extends Controller
         $data = [
             "title" => $this->title,
             "page_title"  => $this->title,
-            "dtTrans" => DB::table('transaction')
+            "dtTrans" => DB::table('transactions')
             ->join("users","transactions.id_cashier","=","users.id")
             ->leftJoin("tables","transactions.id_table","=","tables.id")
             ->select("transactions.*","users.name","tables.no_table")
@@ -38,7 +41,8 @@ class TransactionController extends Controller
             "title" => $this->title,
             "dtMenu" => Menu::all(),
             "dtCustomer" => Customer::where("status_cus",1)->get(),
-            "dtMeja" => Table::all()
+            "dtMeja" => Table::all(),
+            "dtCategory" => Category::all()
         ];
 
         return view('transaction.form',$data);
@@ -98,7 +102,8 @@ class TransactionController extends Controller
         $notif = [
             "type" => "danger",
             "text" => "Data gagal disimpan !".$er->getMessage(),
-            "status" => 500
+            "status" => 500,
+            "url_nota" => route('trans.cetak',$notrans)
         ];
 
     }

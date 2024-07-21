@@ -40,8 +40,8 @@
                     @foreach ($dtMenu as $rsMenu)
                         <tr>
                             <td>
-                                @if (@$rsMen->foto_menu!="")
-                                    <img id="foto_menu" class="thumbnail-small" src="{{ asset('uploads/menu/'/@$rsMenu->foto_menu) }}" alt="{{ @$rsMenu->nm_menu }}">
+                                @if (@$rsMenu->foto_menu!="")
+                                    <img id="foto_menu" class="thumbnail-small" src="{{ asset('uploads/menu/'.@$rsMenu->foto_menu) }}" alt="{{ @$rsMenu->nm_menu }}">
                                 @else
                                     <img id="foto_menu" class="thumbnail-small" src="{{ asset('img/no-menu-image.png') }}" alt="{{ @$rsMenu->nm_menu }}">
                                 @endif
@@ -58,7 +58,7 @@
                             <td>{{ number_format($rsMenu->harga_menu,0,',',',') }} / {{ $rsMenu->satuan_menu }}</td>
                             <td>{{ $rsMenu->stok_menu == "A" ? "Available" : "Unavailable" }}</td>
                             <td class="text-center">
-                                <form action="{{ route('category.destroy', $rsMenu->id) }}" method="post">
+                                <form action="{{ route('menu.destroy', $rsMenu->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <a class="btn btn-warning btn-xs" href="{{ route('menu.edit', $rsMenu->id) }}"><i

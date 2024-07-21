@@ -38,7 +38,7 @@
                         @else
                         <img id="foto_menu" class="thumbnail-menu" src="{{ asset('img/no-menu-image.png') }}" alt="{{ @$rsMenu->nm_menu }}">
                         @endif
-                        <input class="d-none" type="file" name="file_foto" id="file_foto">
+                        <input class="d-none" type="file" name="file_foto" id="file_foto"> 
                         <input class="d-none" type="text" name="old_foto" id="old_foto" value="{{ @$rsMenu->foto_menu }}">
                     </div>
                     {{-- End Body --}}

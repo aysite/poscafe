@@ -30,7 +30,7 @@
 
                 {{-- Dashboard --}}
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
@@ -114,7 +114,7 @@
                 
                 {{-- Transaction --}}
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{ route ('trans.index') }}" class="nav-link">
                       <i class="nav-icon fas fa-shopping-cart"></i>
                       <p>Transaction<i class="right fas fa-angle-left"></i>
                       </p>
@@ -132,7 +132,7 @@
 
                       {{-- List --}}
                       <li class="nav-item">
-                          <a href="#" class="nav-link">
+                          <a href="{{ route('trans.index') }}" class="nav-link">
                               <i class="nav-icon far fa-circle"></i>
                               <p>List</p>
                           </a>

@@ -30,6 +30,17 @@ $(document).ready(function(){
     $("#file_foto").change(function(){
         setImage(this, "#foto");
     })
+
+    // Cari Menu
+    if($("#search").length>0){
+        $('#search').keyup(function(){
+            var rex = new RegExp($(this).val(), 'i');
+            $('.menu-item').hide();
+            $('.menu-item').filter(function (){
+                return rex.test($(this).text());
+            }).show();
+        });
+    }
 })
 
 // Read Image
@@ -47,6 +58,15 @@ function setImage(input, target) {
     }
 }
 
+// Category
+function setCategory(id){
+    if(id=="all"){
+        $(".menu-item").show()
+    } else {
+        $(".menu-item").hide()
+        $(id).show()
+    }
+}
 
 
 // Handle Form Table

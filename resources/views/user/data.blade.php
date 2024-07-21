@@ -59,6 +59,7 @@
                                 <option value="superadmin" {{ @$rsUser->role == "superadmin" || old('role') == "superadmin" ? "selected" : "" }}>Super Admin</option>
                                 <option value="admin" {{ @$rsUser->role == "admin" || old('role') == "admin" ? "selected" : "" }}>Admin</option>
                                 <option value="koki" {{ @$rsUser->role == "koki" || old('role') == "koki" ? "selected" : "" }}>Koki</option>
+                                <option value="cashier" {{ @$rsUser->role == "cashier" || old('role') == "cashier" ? "selected" : "" }}>Kasir</option>
                                 <option value="member" {{ @$rsUser->role == "member" || old('role') == "member" ? "selected" : "" }}>Member </option>
                                 <option value="user" {{ @$rsUser->role == "user" || old('role') == "user" ? "selected" : "" }}>User</option>
                             </select>

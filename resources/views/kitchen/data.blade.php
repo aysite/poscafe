@@ -78,7 +78,7 @@
                                     <td>{{ $rsKitchen->id }}</td>
                                     <td>{{ $rsKitchen->nm_kitchen }}</td>
                                     <td class="text-center">
-                                        <form action="{{ route('kitchen.destroy', $rsKitchen->id) }}" method="post">
+                                        <form action="{{ route('kitchen.destroy',$rsKitchen->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <a class="btn btn-secondary btn-xs"

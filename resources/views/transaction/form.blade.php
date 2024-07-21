@@ -11,15 +11,15 @@
             <div id="menu" class="col-md-8 p-0">
                 <div class="card">
                     <div class="card-header bg-olive">
-                        <h4 class="card-title">CASHIER : ARDI YOTO</h4>
-                        <div class="card-tools">
-                            <a href="{{ url('/') }}"><i class="fas fa-home text-light"></i></a>
+                        <h4 class="card-title"><a href="{{ url('/') }}"><i class="fas fa-home text-light"></i></a>CASHIER : ARDI YOTO</h4>
+                        <div class="card-tools d-flex">
+                            <input type="text" name="search" id="search" class="form-control" placeholder="Search Menu">
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             @foreach ($dtMenu as $rsMenu)
-                                <div class="menu-item col-sm-3">
+                                <div class="menu-item col-sm-3 {{ "cat-".$rsMenu->id_cat_menu }}" onclick="addMenu('{{ $rsMenu }}')">
                                     <div class="position-relative">
                                         @if ($rsMenu->foto_menu)
                                             <img src="{{ asset('uploads/menu/' . $rsMenu->foto_menu) }}" alt="Photo 1"
@@ -43,6 +43,12 @@
                                 </div>
                             @endforeach
                         </div>
+                    </div>
+                    <div id="category" class="card-footer">
+                        <button class="btn btn-warning" onclick="setCategory('all')">All</button>
+                        @foreach ($dtCategory as $rsCat)
+                            <button onclick="setCategory('.cat-{{ $rsCat-id }}')" class="btn btn-primary">{{ $rsCat->nm_category }}</button>
+                        @endforeach
                     </div>
                 </div>
             </div>

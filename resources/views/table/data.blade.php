@@ -34,7 +34,7 @@
                         <div class="position-relative p-3 bg-secondary"style="height : 100px">
                             <div class="ribbon-wrapper ribbon-lg">
                                 <div class="ribbon bg-{{ $rsTable->status_table == 1 ? 'success' : 'danger' }}">
-                                    {{ $rsTable->status_table == 1 ? 'AVAILABLE' : 'USED' }}
+                                    {{ $rsTable->status_table == 1 ? "AVAILABLE" : "USED" }}
                                 </div>
                             </div>
                             <h4>{{ $rsTable->no_table }}</h4>
